@@ -1,15 +1,20 @@
 package com.github.hanyaeger.tutorial.scenes;
 
-import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.DynamicScene;
-import com.github.hanyaeger.tutorial.entities.Swordfish;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import com.github.hanyaeger.tutorial.Waterworld;
+import com.github.hanyaeger.tutorial.entities.Hanny;
+import com.github.hanyaeger.tutorial.entities.sharky.Sharky;
+import com.github.hanyaeger.tutorial.entities.swordfish.Swordfish;
+import com.github.hanyaeger.tutorial.entities.text.HealthText;
 
 public class GameLevel extends DynamicScene {
+
+    private Waterworld waterworld;
+
+    public GameLevel(Waterworld waterworld){
+        this.waterworld = waterworld;
+    }
     @Override
     public void setupScene() {
         setBackgroundAudio("audio/waterworld.mp3");
@@ -17,8 +22,13 @@ public class GameLevel extends DynamicScene {
     }
     @Override
     public void setupEntities() {
+        var health = new HealthText(new Coordinate2D(50, 50));
+        addEntity(health);
+        var hanny = new Hanny(new Coordinate2D(50, 50), health, waterworld);
+        addEntity(hanny);
         var swordfish = new Swordfish(new Coordinate2D(300, 300));
         addEntity(swordfish);
-
+        var sharky = new Sharky(new Coordinate2D(500, 200));
+        addEntity(sharky);
     }
 }
