@@ -10,6 +10,6 @@ public class HitBox extends RectangleEntity implements Collider {
         super(initialPosition);
         setWidth(40);
         setHeight(40);
-        setFill(Color.RED);
+        setFill(Color.TRANSPARENT);
     }
 }
